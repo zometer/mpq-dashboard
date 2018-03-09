@@ -1,0 +1,16 @@
+version: '3.5'
+
+services: 
+    mpq-db: 
+        build: ./mpq-db
+        healthcheck: 
+            test: ["CMD", "psql", "--username", "postgres", "-d", "mpq_data", "-c", "'\\dt'"]
+            interval: 2m
+            start_period: 30s 
+            retries: 3
+        networks: 
+            - mpq-net
+
+networks: 
+    mpq-net: 
+        name: mpq-net
