@@ -4,5 +4,5 @@ create table mpq_data.character_power (
     ordinal_position integer not null, 
     color_id integer references mpq_data.color(color_id) not null,
     constraint ck_character_power_char_color unique (character_id, color_id), 
-    constraint ck_character_power_position (ordinal_position between 1 and 3)
+    constraint ck_character_power_position check (ordinal_position between 1 and 3)
 ); 
