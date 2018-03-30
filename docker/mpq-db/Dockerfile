@@ -8,9 +8,10 @@ RUN mkdir -p /docker-entrypoint-initdb.d/ && \
     mkdir -p $MPQ_DB_INIT_DIR/sql/schema &&\
     mkdir -p $MPQ_DB_INIT_DIR/data/
 
-COPY init-mpq-db.sh /docker-entrypoint-initdb.d/ 
+COPY init-mpq-db.sh /docker-entrypoint-initdb.d/
 
 COPY sql/schema/*.sql $MPQ_DB_INIT_DIR/sql/schema/
 COPY sql/table/*.sql $MPQ_DB_INIT_DIR/sql/table/
+COPY sql/load/*.sql $MPQ_DB_INIT_DIR/sql/load/
 COPY data/*.csv $MPQ_DB_INIT_DIR/data/
 
