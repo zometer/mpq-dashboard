@@ -4,10 +4,12 @@ services:
     mpq-db: 
         build: ./mpq-db
         healthcheck: 
-            test: ["CMD", "psql", "--username", "postgres", "-d", "mpq_data", "-c", "'\\dt'"]
+            test: ["CMD", "psql", "--username", "postgres", "-d", "mpq_data", "-c", "select * from mpq_data.mpq_character"]
             interval: 2m
             start_period: 30s 
             retries: 3
+        ports: 
+            - "5432:5432"
         networks: 
             - mpq-net
 
